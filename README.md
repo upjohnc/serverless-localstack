@@ -16,3 +16,9 @@ in another terminal
 `just sls-first-time-local`
 `just sls-invoke-local`
 
+## dynamo
+
+- run `just sls-first-time-local`
+- run `just dynamo-put` # add record
+- run `just sls-invoke-local`
+
