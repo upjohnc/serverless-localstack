@@ -6,20 +6,18 @@ authors = ["Chad Upjohn <chad.upjohn@veranahealth.com>"]
 
 [tool.poetry.dependencies]
 python = "~3.9"
-psycopg2-binary = "~2.9.1"
+psycopg2-binary = "~2.9.3"
 loguru = "^0.6.0"
 
 [tool.poetry.dev-dependencies]
 isort = "^5.9.3"
 black = "^21.9b0"
-botocore = "1.20.100"
-boto3 = "1.17.100"
 pytest = "^=6.2.0"
 flake8 = "^3.9.2"
 pdbpp = "^0.10.3"
 pytest-assume = "^2.4.3"
 ipython = "^7.28.0"
-poetry = "^1.1.12"
+localstack = "^0.14.3"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

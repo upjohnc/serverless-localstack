@@ -1,0 +1,41 @@
+repos:
+  - repo: git://github.com/pre-commit/pre-commit-hooks
+    rev: v2.1.0
+    hooks:
+    - id: check-yaml
+      exclude: packer/.kitchen.yml$
+      exclude: \.tf$
+    - id: check-case-conflict
+    - id: check-merge-conflict
+    - id: trailing-whitespace
+    - id: check-executables-have-shebangs
+    - id: flake8
+    - id: debug-statements
+    - id: detect-private-key
+      exclude: \_spec.rb$
+  - repo: https://github.com/pre-commit/mirrors-isort
+    rev: v4.3.16
+    hooks:
+    - id: isort
+  - repo: https://github.com/ambv/black
+    rev: 20.8b1
+    hooks:
+    - id: black
+  - repo: https://github.com/antonbabenko/pre-commit-terraform
+    rev: v1.26.0
+    hooks:
+    - id: terraform_fmt
+  - repo: https://github.com/stratasan/hadolint-pre-commit
+    rev: cdefcb096e520a6daa9552b1d4636f5f1e1729cd
+    hooks:
+    - id: hadolint
+  - repo: https://github.com/sqlfluff/sqlfluff
+    rev: 0.5.6
+    hooks:
+      - id: sqlfluff-fix
+      - id: sqlfluff-lint
+  - repo: https://github.com/econchick/interrogate
+    rev: 1.1.4
+    hooks:
+    - id: interrogate
+      args: [-cpyproject.toml, tests] # weird syntax but it is `-c pyproject.toml`

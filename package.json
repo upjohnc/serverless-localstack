@@ -4,11 +4,11 @@
   "version": "0.1.0",
   "dependencies": {
     "serverless": "^3.0.0",
-    "serverless-python-requirements": "^5.1.1",
+    "serverless-python-requirements": "^5.4.0",
     "serverless-step-functions": "^3.5.1"
   },
   "devDependencies": {
-    "serverless-localstack": "^0.4.35",
-    "serverless-offline": "^8.2.0"
+    "serverless-localstack": "^0.4.36",
+    "serverless-offline": "^8.8.0"
   }
 }

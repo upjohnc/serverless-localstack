@@ -11,4 +11,4 @@ env_vars:
   glue_job_name: dev_vh-dit-epic-data-preprocessing
 aws_account_id: 111077548247
 region: "us-east-1"
-deploy_bucket: vh-serverless-master-ue1
+deploy_bucket: deploy-bucket

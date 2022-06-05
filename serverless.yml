@@ -25,18 +25,6 @@ provider:
             - "s3:GetObject"
           Resource:
             - "*"
-        - Effect: Allow
-          Action:
-            - "states:StartExecution"
-          Resource:
-            - "arn:aws:states:${aws:region}:${aws:accountId}:stateMachine:${self:stepFunctions.stateMachines.EpicPreProcessingStateMachine.name}"
-        - Effect: Allow
-          Action:
-            - "glue:GetJobRun"
-            - "glue:GlueJobRun"
-            - "glue:StartJobRun"
-          Resource:
-            - "arn:aws:glue:*:*:job/${self:custom.stage}*"
 
   deploymentBucket:
     name: ${file(./config/${self:custom.stage}.yml):deploy_bucket}
@@ -47,9 +35,6 @@ functions:
     handler: src/basic.run
     description: Log hello
     name: ${self:custom.stage}-${self:service}-Basic
-
-stepFunctions:
-  ${file(serverless/step_functions.yml)}
 
 package:
   patterns:
