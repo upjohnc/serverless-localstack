@@ -25,6 +25,13 @@ provider:
             - "s3:GetObject"
           Resource:
             - "*"
+        - Effect: Allow
+          Action:
+            - "DynamoDB:DeleteObject"
+            - "DynamoDB:PutObject"
+            - "DynamoDB:GetObject"
+          Resource:
+            - "*"
 
   deploymentBucket:
     name: ${file(./config/${self:custom.stage}.yml):deploy_bucket}
