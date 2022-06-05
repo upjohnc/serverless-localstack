@@ -35,7 +35,7 @@ sls-invoke-local:
 sls-first-time-local: create-deploy-bucket sls-deploy-local
 
 dynamo-put:
-    awslocal dynamodb put-item --table-name users_table --item '{"email": {"S": "you"}}'
+    awslocal dynamodb put-item --table-name users_table --item '{"email": {"S": "you@mail.com"}}'
 
-dynamo-list:
+dynamo-scan:
     awslocal dynamodb scan --table-name users_table

@@ -1,10 +1,7 @@
-import logging
 import os
 
 import boto3
-
-logger = logging.getLogger()
-logger.setLevel(logging.INFO)
+from loguru import logger
 
 
 def run(event, context):
