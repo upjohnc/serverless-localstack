@@ -56,6 +56,23 @@ resources:
           - AttributeName: email
             KeyType: HASH
 
+plugins:
+  - serverless-python-requirements
+  - serverless-offline
+  - serverless-localstack
+  - serverless-dynamodb-local
+  - serverless-create-global-dynamodb-table
+
+custom:
+  stage: ${opt:stage, 'dev'}
+  pythonRequirements:
+    dockerEnv:
+      - https_proxy
+    usePoetry: false
+  localstack:
+    stages:
+      local
+
 package:
   patterns:
     - "!venv/**"
@@ -73,21 +90,3 @@ package:
     - "!stubs/**"
     - "!lambda_layers/**"
   individually: true
-
-plugins:
-  - serverless-python-requirements
-  - serverless-offline
-  - serverless-localstack
-  - serverless-step-functions
-  - serverless-dynamodb-local
-  - serverless-create-global-dynamodb-table
-
-custom:
-  stage: ${opt:stage, 'dev'}
-  pythonRequirements:
-    dockerEnv:
-      - https_proxy
-    usePoetry: false
-  localstack:
-    stages:
-      local
