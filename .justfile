@@ -3,6 +3,9 @@ default:
 
 # Set up
 
+install-python:
+    pyenv install $(cat .python-version)
+
 serverless-plugins:
     npm install -d
 

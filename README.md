@@ -3,6 +3,7 @@
 
 ## Set up
 
+- run `just install-python`
 - run `just serverless-plugins`
 - run `just virtualenv-install`
 - run `just precommit`
