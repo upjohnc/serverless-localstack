@@ -63,7 +63,9 @@ plugins:
 custom:
   stage: ${opt:stage, 'dev'}
   pythonRequirements:
-    dockerizePip: non-linux
+    dockerEnv:
+      - https_proxy
+    usePoetry: false
   localstack:
     stages:
       local

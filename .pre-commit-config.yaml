@@ -18,7 +18,7 @@ repos:
     hooks:
     - id: isort
   - repo: https://github.com/ambv/black
-    rev: 20.8b1
+    rev: 22.3.0
     hooks:
     - id: black
   - repo: https://github.com/antonbabenko/pre-commit-terraform
@@ -34,8 +34,3 @@ repos:
     hooks:
       - id: sqlfluff-fix
       - id: sqlfluff-lint
-  - repo: https://github.com/econchick/interrogate
-    rev: 1.1.4
-    hooks:
-    - id: interrogate
-      args: [-cpyproject.toml, tests] # weird syntax but it is `-c pyproject.toml`
