@@ -36,6 +36,22 @@ functions:
     description: Log hello
     name: ${self:custom.stage}-${self:service}-Basic
 
+
+plugins:
+  - serverless-python-requirements
+  - serverless-offline
+  - serverless-localstack
+
+custom:
+  stage: ${opt:stage, 'dev'}
+  pythonRequirements:
+    dockerEnv:
+      - https_proxy
+    usePoetry: false
+  localstack:
+    stages:
+      local
+
 package:
   patterns:
     - "!venv/**"
@@ -53,19 +69,3 @@ package:
     - "!stubs/**"
     - "!lambda_layers/**"
   individually: true
-
-plugins:
-  - serverless-python-requirements
-  - serverless-offline
-  - serverless-localstack
-  - serverless-step-functions
-
-custom:
-  stage: ${opt:stage, 'dev'}
-  pythonRequirements:
-    dockerEnv:
-      - https_proxy
-    usePoetry: false
-  localstack:
-    stages:
-      local
