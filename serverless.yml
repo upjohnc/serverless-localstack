@@ -36,6 +36,19 @@ functions:
     description: Log hello
     name: ${self:custom.stage}-${self:service}-Basic
 
+resources:
+  Resources:
+    UsersTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: users_table
+        AttributeDefinitions:
+          - AttributeName: email
+            AttributeType: S
+        KeySchema:
+          - AttributeName: email
+            KeyType: HASH
+
 package:
   patterns:
     - "!venv/**"
@@ -59,6 +72,8 @@ plugins:
   - serverless-offline
   - serverless-localstack
   - serverless-step-functions
+  - serverless-dynamodb-local
+  - serverless-create-global-dynamodb-table
 
 custom:
   stage: ${opt:stage, 'dev'}
