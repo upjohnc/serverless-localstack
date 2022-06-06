@@ -1,12 +1,6 @@
-import logging
 import os
 
-# from loguru import logger
-# import pysycopg2
-
-
-logger = logging.getLogger()
-logger.setLevel(logging.INFO)
+from loguru import logger
 
 
 def run(event, context):
