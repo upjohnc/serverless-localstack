@@ -34,3 +34,5 @@ sls-invoke-local:
 
 sls-first-time-local: create-deploy-bucket sls-deploy-local
 
+start-presentation:
+    cd reveal && open index.html && cd -
