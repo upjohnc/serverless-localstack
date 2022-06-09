@@ -16,16 +16,88 @@
   <body>
     <div class="reveal">
       <div class="slides">
-        <section>
-          <pre><code data-trim data-noescape>
-        (def lazy-fib
-  (concat
-           [0 1]
-           ((fn rfib [a b]
-                (lazy-cons (+ a b) (rfib b (+ a b)))) 0 1)))
-  </code></pre>        Slide 1
+        <section data-markdown>
+            <script type="text/template">
+              ## Serverless Framework
+                - localstack docker container <!-- .element: class="fragment" data-fragment-index="1" -->
+                - Basic lambda deploy <!-- .element: class="fragment" data-fragment-index="2" -->
+            </script>
         </section>
-        <section>Slide 2</section>
+        <section>
+          <pre><code data-line-numbers="4-8|18-28|39-42">
+service: LocalStackTesting
+
+functions:
+  Basic:
+    handler: src/basic.run
+    description: Log hello
+    name: ${self:custom.stage}-${self:service}-Basic
+
+provider:
+  stackName: ${self:custom.stage}-${self:service}
+  versionFunctions: false
+  name: aws
+  timeout: 200
+  runtime: python3.9
+  region: ${file(./config/${self:custom.stage}.yml):region}
+  logRetentionInDays: 30
+  iam:
+    role:
+      name: ${self:custom.stage}-${self:service}
+      statements:
+        - Effect: Allow
+          Action:
+            - "s3:DeleteObject"
+            - "s3:PutObject"
+            - "s3:GetObject"
+          Resource:
+            - "*"
+        - Effect: Allow
+          Action:
+            - "s3:List*"
+          Resource:
+            - "*"
+
+  deploymentBucket:
+    name: ${file(./config/${self:custom.stage}.yml):deploy_bucket}
+  environment: ${file(./config/${self:custom.stage}.yml):env_vars}
+
+plugins:
+  - serverless-python-requirements
+  - serverless-offline
+  - serverless-localstack
+
+custom:
+  stage: ${opt:stage, 'dev'}
+  pythonRequirements:
+    usePoetry: true
+  localstack:
+    stages:
+      local
+          </code></pre>
+        </section>
+        <section>
+          show that things are set up for simplifying the deploy
+        </section>
+        <section>
+          iam is created for the service
+        </section>
+        <section>
+          show poetry at work
+        </section>
+        <section>
+          show simplicity to update code and deploy
+        </section>
+        <section>
+          slide 2
+          dynamo db
+        </section>
+        <section>
+          show that you can add a resource
+        </section>
+        <section>
+          adding the table structure as a nice to have : it isn't obligatory
+        </section>
       </div>
     </div>
 
