@@ -41,6 +41,7 @@ plugins:
   - serverless-python-requirements
   - serverless-offline
   - serverless-localstack
+  - serverless-step-functions
 
 custom:
   stage: ${opt:stage, 'dev'}
