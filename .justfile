@@ -32,5 +32,8 @@ sls-deploy-local:
 sls-invoke-local:
     SLS_DEBUG=* sls invoke --function Basic --stage local --data '{"my_name": "whamo"}'
 
+sls-step-function-invoke:
+    SLS_DEBUG=* sls invoke stepf --name EpicPreProcessingStateMachine --stage local --data '{"ehr_connection_name": "epic", "delivery_date": "2021-09-01", "ingestion_id": "c25drn4idtlb8j6ojah0"}'
+
 sls-first-time-local: create-deploy-bucket sls-deploy-local
 
