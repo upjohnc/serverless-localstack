@@ -25,17 +25,24 @@ provider:
             - "s3:GetObject"
           Resource:
             - "*"
+        - Effect: Allow
+          Action:
+            - "states:StartExecution"
+          Resource:
+            - "arn:aws:states:${aws:region}:${aws:accountId}:stateMachine:${self:stepFunctions.stateMachines.EpicPreProcessingStateMachine.name}"
 
   deploymentBucket:
     name: ${file(./config/${self:custom.stage}.yml):deploy_bucket}
   environment: ${file(./config/${self:custom.stage}.yml):env_vars}
+
+stepFunctions:
+  ${file(serverless/step_functions.yml)}
 
 functions:
   Basic:
     handler: src/basic.run
     description: Log hello
     name: ${self:custom.stage}-${self:service}-Basic
-
 
 plugins:
   - serverless-python-requirements
