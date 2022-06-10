@@ -45,7 +45,7 @@ plugins:
 custom:
   stage: ${opt:stage, 'dev'}
   pythonRequirements:
-    usePoetry: true
+    usePoetry: false
   localstack:
     stages:
       local
@@ -66,4 +66,4 @@ package:
     - "!test_json/**"
     - "!stubs/**"
     - "!lambda_layers/**"
-  individually: true
+  individually: false

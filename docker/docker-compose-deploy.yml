@@ -1,0 +1,17 @@
+version: "3.8"
+
+services:
+  serverless-deploy:
+    build:
+      context: ..
+      dockerfile: ./docker/Dockerfile
+
+    volumes:
+      - ${PWD}/serverless.yml:/serverless.yml
+      - ${PWD}/package*:/package*
+      - ${PWD}/src:/src
+      - ${PWD}/config:/config
+
+    ports:
+      - "4566:4566"
+

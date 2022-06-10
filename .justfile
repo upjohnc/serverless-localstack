@@ -34,3 +34,11 @@ sls-invoke-local:
 
 sls-first-time-local: create-deploy-bucket sls-deploy-local
 
+sls-deploy-docker:
+    docker compose -f ./docker/docker-compose-deploy.yml run serverless-deploy sls deploy --stage local --verbose
+
+sls-deploy-bash:
+    docker compose -f ./docker/docker-compose-deploy.yml run serverless-deploy bash
+
+deploy-down:
+    docker compose -f ./docker/docker-compose-deploy.yml down
