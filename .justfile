@@ -30,7 +30,7 @@ sls-deploy-local:
     SLS_DEBUG=* poetry run sls deploy --stage local --verbose
 
 sls-invoke-local:
-    SLS_DEBUG=* poetry run sls invoke --function Basic --stage local --data '{"my_name": "whamo"}'
+    SLS_DEBUG=* sls invoke --function Basic --stage local --data '{"my_name": "whamo"}'
 
 sls-first-time-local: create-deploy-bucket sls-deploy-local
 
