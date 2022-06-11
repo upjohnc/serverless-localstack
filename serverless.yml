@@ -63,9 +63,7 @@ resources:
 
 plugins:
   - serverless-python-requirements
-  - serverless-offline
   - serverless-localstack
-  - serverless-dynamodb-local
   - serverless-create-global-dynamodb-table
 
 custom:

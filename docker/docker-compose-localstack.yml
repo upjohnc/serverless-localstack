@@ -15,7 +15,7 @@ services:
       - DEBUG=${DEBUG-}
       - DATA_DIR=${DATA_DIR-}
       - LAMBDA_EXECUTOR=docker
-      - LOCALSTACK_API_KEY=${LOCALSTACK_API_KEY-}  # only required for Pro
+      - LOCALSTACK_API_KEY=${LOCALSTACK_API_KEY-}
       - HOST_TMP_FOLDER=${TMPDIR:-/tmp/}localstack
       - DOCKER_HOST=unix:///var/run/docker.sock
     volumes:
