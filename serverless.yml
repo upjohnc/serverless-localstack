@@ -73,7 +73,7 @@ custom:
   pythonRequirements:
     dockerEnv:
       - https_proxy
-    usePoetry: false
+    usePoetry: true
   localstack:
     stages:
       local
