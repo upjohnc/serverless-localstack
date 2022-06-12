@@ -1,8 +1,13 @@
 # serverless framework on localstack
 
 Table of Contents
-1. [set up local environment](#set-up)
-1. [Running Serverless](#running-serverless)
+1. [Branches](#branches)
+2. [set up local environment](#set-up)
+3. [Running Serverless](#running-serverless)
+
+## Branches
+
+There are two branches, other than the `master` branch.  One is to show `step_functions` and the other is `dynamodb`.
 
 ## Set Up
 
