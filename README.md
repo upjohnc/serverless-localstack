@@ -19,6 +19,9 @@ Either : `just serverless-plugins` or `npm install -d`
 
 ### Python
 
+Python is needed for building the zip file with the third party packages.  Your local python version
+does not effect the running of the lambda.  That is defined as the `runtime` in the `serverless.yml`.
+
 If you would like, you can follow the instructions to set up the local environment as the repo is set up.
 Or alternatively, you can also change the files to match what you already have set up locally.
 
@@ -44,7 +47,7 @@ Set up your local python virtual env with poetry
 
 ## Running Serverless
 
-The repo is designed to deploy the lambda to localstack.  The basics is that it is a docker container running locally
+The repo is designed to deploy the lambda to localstack.  The basics are that it is a docker container running locally
 to replicate a cloud provider (like aws).  [localstack service url](https://localstack.cloud)
 
 Steps
@@ -64,5 +67,3 @@ go to `https://app.localstack.cloud` to see the resources
 Clean up:
 - `ctrl-c` in the terminal running localstack
 - `just localstack-down` to "clean up" after the docker compose run
-
-
