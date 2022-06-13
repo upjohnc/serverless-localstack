@@ -10,6 +10,7 @@ serverless-plugins:
     npm install -d
 
 virtualenv-install:
+    poetry env use $(which python)
     poetry install
 
 precommit:
