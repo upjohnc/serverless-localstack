@@ -45,10 +45,12 @@ plugins:
 custom:
   stage: ${opt:stage, 'dev'}
   pythonRequirements:
-    usePoetry: false
+    usePoetry: true
   localstack:
     stages:
       local
+    host:
+      http://localhost
 
 package:
   patterns:
