@@ -1,0 +1,124 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Serverless Framework</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/black.css">
+
+    <!-- Theme used for syntax highlighted code -->
+    <link rel="stylesheet" href="plugin/highlight/monokai.css">
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section data-markdown>
+            <script type="text/template">
+              ## Serverless
+               - Definition: You submit your code with configuration and the provider handles the infrastructure<!-- .element: class="fragment" data-fragment-index="1" -->
+              ---
+              ## Serverless Framework
+               - Definition: Tool to define and deploy your serverless resources<!-- .element: class="fragment" data-fragment-index="1" -->
+              ---
+              ## Presentation Plan
+                - Create a lambda <!-- .element: class="fragment" data-fragment-index="1" -->
+                - Update lambda <!-- .element: class="fragment" data-fragment-index="2" -->
+                - Add dynamodb table <!-- .element: class="fragment" data-fragment-index="3" -->
+              ---
+              ## Project Layout
+              - VS Code
+                - package.json
+                - pyproject.toml : poetry install packages
+                - basic.py
+                - serverless.yml
+            </script>
+        </section>
+        <section>
+                serverless.yml
+          <pre><code data-line-numbers="4-8|18-28|39-41">
+service: LocalStackTesting
+
+functions:
+  Basic:
+    handler: src/basic.run
+    description: Log hello
+    name: ${self:custom.stage}-${self:service}-Basic
+
+provider:
+  stackName: ${self:custom.stage}-${self:service}
+  versionFunctions: false
+  name: aws
+  timeout: 200
+  runtime: python3.9
+  region: ${file(./config/${self:custom.stage}.yml):region}
+  logRetentionInDays: 30
+  iam:
+    role:
+      name: ${self:custom.stage}-${self:service}
+      statements:
+        - Effect: Allow
+          Action:
+            - "s3:DeleteObject"
+            - "s3:PutObject"
+            - "s3:GetObject"
+          Resource:
+            - "*"
+        - Effect: Allow
+          Action:
+            - "s3:List*"
+          Resource:
+            - "*"
+
+  deploymentBucket:
+    name: ${file(./config/${self:custom.stage}.yml):deploy_bucket}
+  environment: ${file(./config/${self:custom.stage}.yml):env_vars}
+
+plugins:
+  - serverless-python-requirements
+  - serverless-localstack
+
+custom:
+  stage: ${opt:stage, 'dev'}
+  pythonRequirements:
+    usePoetry: true
+  localstack:
+    stages:
+      local
+          </code></pre>
+        </section>
+        <section data-markdown>
+            <script type="text/template">
+              ## Demo
+               - Deploy lambda<!-- .element: class="fragment" data-fragment-index="1" -->
+              ---
+              ## Demo
+               - Update lambda<!-- .element: class="fragment" data-fragment-index="1" -->
+              ---
+              ## Demo
+                - Deploy dynamodb<!-- .element: class="fragment" data-fragment-index="1" -->
+            </script>
+        </section>
+      </div>
+    </div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+			});
+		</script>
+	</body>
+</html>
