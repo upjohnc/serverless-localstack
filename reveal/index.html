@@ -22,9 +22,19 @@
                - Definition: You submit your code with configuration and the provider handles the infrastructure<!-- .element: class="fragment" data-fragment-index="1" -->
               ---
               ## Serverless Framework
+               - Definition: Tool to define and deploy your serverless resources<!-- .element: class="fragment" data-fragment-index="1" -->
+              ---
+              ## Presentation Plan
                 - Create a lambda <!-- .element: class="fragment" data-fragment-index="1" -->
                 - Update lambda <!-- .element: class="fragment" data-fragment-index="2" -->
                 - Add dynamodb table <!-- .element: class="fragment" data-fragment-index="3" -->
+              ---
+              ## Code Layout
+              - VS Code
+                - package.json
+                - pyproject.toml : poetry install packages
+                - basic.py
+                - serverless.yml
             </script>
         </section>
         <section>
@@ -80,27 +90,17 @@ custom:
       local
           </code></pre>
         </section>
-        <section>
-          show that things are set up for simplifying the deploy
-        </section>
-        <section>
-          iam is created for the service
-        </section>
-        <section>
-          show poetry at work
-        </section>
-        <section>
-          show simplicity to update code and deploy
-        </section>
-        <section>
-          slide 2
-          dynamo db
-        </section>
-        <section>
-          show that you can add a resource
-        </section>
-        <section>
-          adding the table structure as a nice to have : it isn't obligatory
+        <section data-markdown>
+            <script type="text/template">
+              ## Demo
+               - Deploy lambda<!-- .element: class="fragment" data-fragment-index="1" -->
+              ---
+              ## Demo
+               - Update lambda<!-- .element: class="fragment" data-fragment-index="1" -->
+              ---
+              ## Demo
+                - Deploy dynamodb<!-- .element: class="fragment" data-fragment-index="1" -->
+            </script>
         </section>
       </div>
     </div>
