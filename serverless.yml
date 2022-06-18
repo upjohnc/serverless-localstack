@@ -18,6 +18,11 @@ provider:
             - "s3:List*"
           Resource:
             - "*"
+
+
+
+
+
         - Effect: Allow
           Action:
             - "s3:DeleteObject"
