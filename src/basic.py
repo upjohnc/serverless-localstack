@@ -17,5 +17,8 @@ def run(event, context):
     logger.info("Useful")
     client = boto3.client("dynamodb", **endpoint_url)
     response = client.scan(TableName="users_table")
-    logger.info(response)
+    try:
+        logger.info(response.get("Items")[0].get("email"))
+    except Exception:
+        logger.info(response)
     return response
