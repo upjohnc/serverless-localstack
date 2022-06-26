@@ -18,7 +18,7 @@ def run(event, context):
     client = boto3.client("dynamodb", **endpoint_url)
     response = client.scan(TableName="users_table")
     try:
-        logger.info(response.get("Items")[0].get("email"))
+        logger.info(response["Items"][0]["email"])
     except Exception:
         logger.info(response)
     return response
